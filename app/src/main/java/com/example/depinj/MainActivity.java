@@ -12,17 +12,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import android.os.Bundle;
+
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadInfo(View v) {
         try {
             TextView employeeName = findViewById(R.id.tvInputName);
-            TextView employeeTitle = findViewById(R.id.tvInputTitle);
+            TextView employeeTitle = findViewById(R.id.tvInputEmail);
             // get JSONObject from JSON file
             JSONObject obj = new JSONObject(JSON_STRING);
             // fetch JSONObject named employee
@@ -101,4 +95,37 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
+    public void gInfo(View v) {
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONArray m_jArry = obj.getJSONArray("Employees");
+            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> m_li;
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                Log.d("Details-->", jo_inside.getString("userId"));
+                String firstName = jo_inside.getString("firstName");
+                String jobTitleName = jo_inside.getString("jobTitleName");
+                String email = jo_inside.getString("emailAddress");
+
+                //Add your values in your `ArrayList` as below:
+                m_li = new HashMap<String, String>();
+                m_li.put("Name", firstName);
+                m_li.put("Title", jobTitleName);
+                m_li.put("Email", email);
+
+                formList.add(m_li);
+                TextView tv = findViewById(R.id.tvInputName);
+                TextView tv2 = findViewById(R.id.tvInputTitle);
+                TextView tv3 = findViewById(R.id.tvInputEmail);
+                tv.setText(m_li.get("Name"));
+                tv2.setText(m_li.get("Title"));
+                tv3.setText(m_li.get("Email"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

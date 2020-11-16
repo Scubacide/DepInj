@@ -63,27 +63,16 @@
         android:id="@+id/tvInputName"
         android:layout_width="186dp"
         android:layout_height="24dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/tvName"
         app:layout_constraintTop_toBottomOf="@+id/tvLabel" />
 
     <TextView
-        android:id="@+id/tvInputTitle"
-        android:layout_width="191dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvInputTitle"
-        app:layout_constraintStart_toEndOf="@+id/tvTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvInputName"
-        app:layout_constraintVertical_bias="0.214" />
-
-    <TextView
-        android:id="@+id/tvInputTitle"
+        android:id="@+id/tvInputEmail"
         android:layout_width="190dp"
         android:layout_height="26dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvEmail"
@@ -94,19 +83,21 @@
         android:id="@+id/buttonInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="360dp"
         android:onClick="loadInfo"
         android:text="Load Data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInputTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvInputEmail"
         app:layout_constraintVertical_bias="0.195" />
 
     <Button
         android:id="@+id/getButton"
         android:layout_width="96dp"
         android:layout_height="45dp"
+        android:onClick="gInfo"
         android:text="Get"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,5 +105,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonInput"
         app:layout_constraintVertical_bias="0.083" />
+
+    <TextView
+        android:id="@+id/tvInputTitle"
+        android:layout_width="187dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvInputEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toEndOf="@+id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvInputName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
